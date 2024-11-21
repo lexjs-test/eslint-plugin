@@ -11,10 +11,15 @@
     ".": {
       "import": "./plugin/index.js",
       "default": "./plugin/index.js"
+    },
+    "./utils": {
+      "import": "./utils/index.js",
+      "default": "./utils/index.js"
     }
   },
   "files": [
-    "plugin"
+    "plugin",
+    "utils"
   ],
   "scripts": {},
   "keywords": [],
@@ -22,12 +27,14 @@
   "license": "ISC",
   "peerDependencies": {
     "eslint": ">=9.0.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
     "typescript": ">=5.0.0",
     "typescript-eslint": ">=8.0.0"
+  },
+  "dependencies": {
+    "@eslint/compat": "^1.2.3"
   },
   "devDependencies": {
     "eslint": "^9.15.0"
