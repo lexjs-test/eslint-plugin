@@ -1,0 +1,35 @@
+{
+  "name": "@lexjs/eslint-plugin",
+  "version": "0.0.1",
+  "description": "lexjs eslint plugin",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./plugin/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./plugin/index.js",
+      "default": "./plugin/index.js"
+    }
+  },
+  "files": [
+    "plugin"
+  ],
+  "scripts": {},
+  "keywords": [],
+  "author": "Lex Borisoff <lex@borisoff.dev>",
+  "license": "ISC",
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "typescript": ">=5.0.0",
+    "typescript-eslint": ">=8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.15.0"
+  }
+}
