@@ -1,5 +1,5 @@
 import importPlugin from 'eslint-plugin-import';
-import * as tseslint from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(importPlugin.flatConfigs.recommended, {
   rules: {
@@ -7,6 +7,7 @@ export default tseslint.config(importPlugin.flatConfigs.recommended, {
     'import/no-duplicates': 'error',
     'import/first': 'error',
     'import/newline-after-import': 'error',
+    'import/no-named-as-default-member': 'off',
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'export' },

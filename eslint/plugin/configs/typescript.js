@@ -1,4 +1,4 @@
-import * as tseslint from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 import importConfigTypescript from './import-typescript.js';
 export default tseslint.config(tseslint.configs.recommended, tseslint.configs.eslintRecommended, importConfigTypescript, {
     files: ['**/*.{ts,tsx}'],

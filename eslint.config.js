@@ -1,4 +1,4 @@
-import * as tseslint from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 import plugin from './eslint/plugin/index.js';
 import { ignoreFile } from './eslint/utils/ignore-file.js';
 

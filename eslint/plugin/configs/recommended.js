@@ -1,6 +1,6 @@
 import eslint from '@eslint/js';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
-import * as tseslint from 'typescript-eslint';
+import tseslint from 'typescript-eslint';
 import importConfig from './import.js';
 export default tseslint.config(eslint.configs.recommended, prettierRecommended, importConfig, {
     rules: {
