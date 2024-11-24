@@ -24,8 +24,12 @@
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf ./dist",
+    "format": "prettier --write *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
+    "lint": "eslint src/**/*.{js,ts}",
+    "lint:fix": "npm run lint -- --fix",
+    "prebuild": "npm run format && npm run lint:fix && rimraf ./dist",
     "build": "tsc -p ./tsconfig.build.json",
+    "prepack": "npm run build",
     "prebuild:eslint": "rimraf ./eslint",
     "build:eslint": "tsc -p ./tsconfig.eslint.json"
   },
@@ -37,7 +41,6 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "typescript": ">=5.0.0",
     "typescript-eslint": ">=8.0.0"
   },
   "dependencies": {
@@ -46,6 +49,8 @@
   "devDependencies": {
     "@types/node": "^18.19.64",
     "eslint": "^9.15.0",
-    "rimraf": "^6.0.1"
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": "<5.7.0"
   }
 }
