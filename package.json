@@ -5,23 +5,34 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./plugin/index.js",
   "type": "module",
+  "main": "./dist/plugin/index.js",
+  "types": "./dist/types/plugin/index.d.ts",
   "exports": {
     ".": {
-      "import": "./plugin/index.js",
-      "default": "./plugin/index.js"
+      "types": "./dist/types/plugin/index.d.ts",
+      "import": "./dist/plugin/index.js",
+      "default": "./dist/plugin/index.js"
     },
     "./utils": {
-      "import": "./utils/index.js",
-      "default": "./utils/index.js"
+      "types": "./dist/types/utils/index.d.ts",
+      "import": "./dist/utils/index.js",
+      "default": "./dist/utils/index.js"
     }
   },
   "files": [
-    "plugin",
-    "utils"
+    "dist"
   ],
-  "scripts": {},
+  "scripts": {
+    "format": "prettier --write *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
+    "lint": "eslint src/**/*.{js,ts}",
+    "lint:fix": "npm run lint -- --fix",
+    "prebuild": "npm run format && npm run lint:fix && rimraf ./dist",
+    "build": "tsc -p ./tsconfig.build.json",
+    "prepack": "npm run build",
+    "prebuild:eslint": "npm run format && npm run lint:fix && rimraf ./eslint",
+    "build:eslint": "tsc -p ./tsconfig.eslint.json"
+  },
   "keywords": [],
   "author": "Lex Borisoff <lex@borisoff.dev>",
   "license": "ISC",
@@ -30,13 +41,16 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "typescript": ">=5.0.0",
     "typescript-eslint": ">=8.0.0"
   },
   "dependencies": {
     "@eslint/compat": "^1.2.3"
   },
   "devDependencies": {
-    "eslint": "^9.15.0"
+    "@types/node": "^18.19.64",
+    "eslint": "^9.15.0",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "typescript": ">=5.0.0 <5.7.0"
   }
 }
