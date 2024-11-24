@@ -30,7 +30,7 @@
     "prebuild": "npm run format && npm run lint:fix && rimraf ./dist",
     "build": "tsc -p ./tsconfig.build.json",
     "prepack": "npm run build",
-    "prebuild:eslint": "rimraf ./eslint",
+    "prebuild:eslint": "npm run format && npm run lint:fix && rimraf ./eslint",
     "build:eslint": "tsc -p ./tsconfig.eslint.json"
   },
   "keywords": [],
