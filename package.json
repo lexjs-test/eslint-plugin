@@ -1,9 +1,10 @@
 {
-  "name": "@lexjs/eslint-plugin",
-  "version": "0.0.1",
+  "name": "@lextest/eslint-plugin",
+  "version": "0.0.1-beta.5",
   "description": "lexjs eslint plugin",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "tag": "beta"
   },
   "type": "module",
   "main": "./dist/plugin/index.js",
@@ -24,14 +25,24 @@
     "dist"
   ],
   "scripts": {
+    "build": "npm run tsc",
+    "prebuild": "npm run check-style && npm run check-build && rimraf ./dist",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run ci",
+    "ci": "npm run build && npm run check-exports",
+    "check-style": "npm run format:check && npm run lint",
+    "check-exports": "attw --pack . --profile=esm-only",
+    "check-build": "npm run tsc -- --noEmit",
+    "tsc": "tsc -p ./tsconfig.build.json",
     "format": "prettier --write *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
+    "format:check": "prettier --check *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
     "lint": "eslint src/**/*.{js,ts}",
     "lint:fix": "npm run lint -- --fix",
-    "prebuild": "npm run format && npm run lint:fix && rimraf ./dist",
-    "build": "tsc -p ./tsconfig.build.json",
-    "prepack": "npm run build",
-    "prebuild:eslint": "npm run format && npm run lint:fix && rimraf ./eslint",
-    "build:eslint": "tsc -p ./tsconfig.eslint.json"
+    "style": "npm run format && npm run lint:fix",
+    "build:eslint": "npm run tsc:eslint",
+    "prebuild:eslint": "npm run check-style && npm run check-build:eslint && rimraf ./eslint",
+    "tsc:eslint": "tsc -p ./tsconfig.eslint.json",
+    "check-build:eslint": "npm run tsc:eslint -- --noEmit"
   },
   "keywords": [],
   "author": "Lex Borisoff <lex@borisoff.dev>",
@@ -47,6 +58,7 @@
     "@eslint/compat": "^1.2.3"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
     "@types/node": "^18.19.64",
     "eslint": "^9.15.0",
     "prettier": "^3.3.3",
