@@ -1,5 +1,5 @@
-import path from 'node:path';
 import { includeIgnoreFile, type FlatConfig } from '@eslint/compat';
+import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export function ignoreFile(file: string, meta: ImportMeta): string {
