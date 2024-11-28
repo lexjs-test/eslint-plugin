@@ -58,8 +58,7 @@
     "@eslint/compat": "^1.2.3"
   },
   "devDependencies": {
-    "@arethetypeswrong/cli": "^0.17.0",
-    "@types/node": "^18.19.64",
+    "@types/node": "^20.17.9",
     "eslint": "^9.15.0",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
