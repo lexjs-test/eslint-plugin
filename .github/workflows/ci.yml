@@ -33,7 +33,7 @@ jobs:
         run: npm run build
 
   results:
-    if: ${{ always() }}
+    if: always()
     runs-on: ubuntu-latest
     name: Final Results
     needs: [build]
