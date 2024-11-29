@@ -32,10 +32,10 @@ jobs:
       - name: Run build
         run: npm run build
 
-  results:
+  final-results:
     if: ${{ always() }}
     runs-on: ubuntu-latest
-    name: Final Results
+    name: Build Results
     needs: [build]
     steps:
       - run: |
