@@ -31,3 +31,7 @@ jobs:
 
       - name: Run build
         run: npm run build
+
+  ci:
+    runs-on: ubuntu-latest
+    needs: build
