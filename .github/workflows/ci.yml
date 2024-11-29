@@ -32,16 +32,16 @@ jobs:
       - name: Run build
         run: npm run build
 
-  # final-results:
-  #   if: ${{ always() }}
-  #   runs-on: ubuntu-latest
-  #   name: Build Results
-  #   needs: [build]
-  #   steps:
-  #     - run: |
-  #         result="${{ needs.build.result }}"
-  #         if [[ $result == "success" || $result == "skipped" ]]; then
-  #           exit 0
-  #         else
-  #           exit 1
-  #         fi
+  results:
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    name: Final Results
+    needs: [build]
+    steps:
+      - run: |
+          result="${{ needs.build.result }}"
+          if [[ $result == "success" || $result == "skipped" ]]; then
+            exit 0
+          else
+            exit 1
+          fi
