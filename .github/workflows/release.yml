@@ -10,25 +10,25 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: latest
 
-      - name: Install dependencies
-        run: npm clean-install
-
-      - name: Run build
-        run: npm run build
+      - run: npm clean-install
+      - run: npm run build
 
       - name: Release
         env:
