@@ -4,42 +4,38 @@ on:
   pull_request:
     branches:
       - main
+      - dev
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [18, 20, 22, latest]
+        node-version: ['18.x', '20.x', '22.x', latest]
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
 
-      - name: Install dependencies
-        run: npm clean-install
-
-      - name: Run build
-        run: npm run build
+      - run: npm clean-install
+      - run: npm run ci
 
   results:
     if: always()
     runs-on: ubuntu-latest
-    name: Final Results
-    needs: [build]
+    name: CI Results
+    needs: ci
     steps:
       - run: |
-          result="${{ needs.build.result }}"
+          result="${{ needs.ci.result }}"
           if [[ $result == "success" || $result == "skipped" ]]; then
             exit 0
           else
