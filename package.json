@@ -33,7 +33,7 @@
     "check-build": "npm run tsc -- --noEmit",
     "tsc": "tsc -p ./tsconfig.build.json",
     "format": "prettier --write *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
-    "format:checks": "prettier --check *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
+    "format:check": "prettier --check *.{js,cjs,mjs,ts,cts,mts} src/**/*.ts",
     "lint": "eslint src/**/*.{js,ts}",
     "lint:fix": "npm run lint -- --fix",
     "style": "npm run format && npm run lint:fix",
