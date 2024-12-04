@@ -8,6 +8,9 @@ jobs:
   sync-dev:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
