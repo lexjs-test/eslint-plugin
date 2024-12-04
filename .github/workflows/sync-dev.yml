@@ -17,10 +17,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote -v
+          echo 1
           git fetch origin
+          echo 2
           git branch -r
+          echo 3
           git branch -vv
-          git checkout dev
+          echo 4
+          git pull origin main
+          echo 5
+          git switch dev
+          echo 6
           git pull origin dev
-          git merge origin/main
+          echo 7
+          git branch -vv
+          echo 8
+          git merge main
+          echo 9
           git push origin dev
